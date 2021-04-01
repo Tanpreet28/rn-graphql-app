@@ -1,0 +1,18 @@
+syntax = "proto3"
+import "./employee.proto";
+
+message Company {
+    string id = 1;
+    string name = 2;
+    string description = 3;
+}
+
+service CompannyService {
+    rpc companies () : returns ([Company]) {}
+    rpc addCompany (Company) : returns () {}
+}   rpc employee (google.protobuf.Empty) returns (Employee) {}
+    rpc addEmployee (Employee) returns (google.protobuf.Empty) {}
+    rpc editEmployee (google.protobuf.Empty) returns (Employees) {}
+    rpc deleteEmployee (google.protobuf.Empty) returns (Employees) {}
+    rpc companies (google.protobuf.Empty) returns (Companies) {}
+    rpc addCompany (Company) returns (google.protobuf.Empty) {}

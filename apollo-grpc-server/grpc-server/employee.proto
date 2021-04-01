@@ -1,0 +1,47 @@
+syntax = "proto3";
+import "google/protobuf/empty.proto";
+import "google/protobuf/any.proto";
+
+message Employee {
+    string id = 1;
+    string name = 2;
+    int32 age = 3;
+    string phone = 4;
+    string email = 5;
+    string address = 6;
+    string bankName = 7;
+    string branchAddress = 8;
+    string accountNumber = 9;
+    Company company = 10;
+}
+
+message Employees {
+    repeated Employee employees = 1;
+}
+
+message Company {
+    string id = 11;
+    string name = 12;
+    string description = 13;
+    repeated Employee employees  = 14;
+}
+
+message Companies {
+    repeated Company companies = 1;
+}
+
+message EmpReq {
+    string name = 2;
+    int32 age = 3;
+    string company = 4;
+}
+
+service EmployeeService {
+    rpc employees (google.protobuf.Empty) returns (Employees) {}
+    rpc employee (google.protobuf.Empty) returns (Employee) {}
+    rpc addEmployee (EmpReq) returns (google.protobuf.Empty) {}
+    rpc editEmployee (google.protobuf.Empty) returns (Employees) {}
+    rpc deleteEmployee (google.protobuf.Empty) returns (Employees) {}
+    rpc companies (google.protobuf.Empty) returns (Companies) {}
+    rpc addCompany (Company) returns (google.protobuf.Empty) {}
+}
